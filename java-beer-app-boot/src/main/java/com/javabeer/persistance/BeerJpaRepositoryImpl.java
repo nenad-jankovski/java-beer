@@ -30,15 +30,19 @@ public class BeerJpaRepositoryImpl implements BeerRepository {
 
     @Override
     public Optional<Beer> findBeerById(BeerId beerId) {
-        BeerJpaEntity beerJpa = entityManager.createQuery("SELECT b from BeerJpaEntity b where b.id = :id", BeerJpaEntity.class)
-                .setParameter("id", beerId.getId()).getSingleResult();
-        return Optional.of(beerJpa).map(BeerEntityMapper::toDomainModel);
+        return entityManager.createQuery("SELECT b from BeerJpaEntity b where b.id = :id", BeerJpaEntity.class)
+                .setParameter("id", beerId.getId())
+                .setMaxResults(1)
+                .getResultStream()
+                .findFirst()
+                .map(BeerEntityMapper::toDomainModel);
     }
 
     @Override
     public Collection<Beer> findBeersByCategory(BeerCategory beerCategory) {
-        List<BeerJpaEntity> jpaBeers = entityManager.createQuery("SELECT b from BeerJpaEntity b where b.category = :category", BeerJpaEntity.class)
-                .setParameter("category", beerCategory.name()).getResultList();
-        return jpaBeers.stream().map(BeerEntityMapper::toDomainModel).collect(Collectors.toList());
+        return entityManager.createQuery("SELECT b from BeerJpaEntity b where b.category = :category", BeerJpaEntity.class)
+                .setParameter("category", beerCategory.name())
+                .getResultStream().map(BeerEntityMapper::toDomainModel)
+                .collect(Collectors.toList());
     }
 }
