@@ -7,6 +7,10 @@ import com.javabeer.domain.BeerId;
 
 public class BeerEntityMapper {
 
+    private BeerEntityMapper() {
+
+    }
+
     public static BeerJpaEntity fromDomainModel(Beer beer) {
         var beerJpaEntity = new BeerJpaEntity();
         beerJpaEntity.setId(beer.getId().getId());

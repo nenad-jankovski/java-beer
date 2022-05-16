@@ -42,6 +42,6 @@ public class BeerJpaRepositoryImpl implements BeerRepository {
         return entityManager.createQuery("SELECT b from BeerJpaEntity b where b.category = :category", BeerJpaEntity.class)
                 .setParameter("category", beerCategory.name())
                 .getResultStream().map(BeerEntityMapper::toDomainModel)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

@@ -9,9 +9,6 @@ import javax.persistence.Table;
 @Table(name = "BEER")
 public class BeerJpaEntity {
 
-    public BeerJpaEntity(){
-    }
-
     @Id
     @Column(name = "id", nullable = false)
     private String id;

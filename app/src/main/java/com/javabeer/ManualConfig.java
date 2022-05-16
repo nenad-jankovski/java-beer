@@ -9,8 +9,10 @@ import com.javabeer.usecase.FindBeersByCategory;
 import com.javabeer.usecase.port.IdGenerator;
 import com.javabeer.usecase.port.persistance.BeerRepository;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 public class ManualConfig {
 
@@ -31,7 +33,7 @@ public class ManualConfig {
 
         @Override
         public Collection<Beer> findBeersByCategory(BeerCategory beerCategory) {
-            return beers.stream().filter(beer -> beerCategory == beer.getCategory()).collect(Collectors.toList());
+            return beers.stream().filter(beer -> beerCategory == beer.getCategory()).toList();
         }
     };
 
