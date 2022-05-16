@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "a64a7b02-6842-4d2f-a776-37d0b9b9a713",
+		"name": "java beer collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/v1/api/beers/hi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"v1",
+						"api",
+						"beers",
+						"hi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create beer - SKOPSKO_PILSNER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Skopsko\",\r\n    \"producer\" : \"ACME company SK\",\r\n    \"category\" : \"PILSNER\",\r\n    \"id\" : null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/v1/api/beers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"v1",
+						"api",
+						"beers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create beer - DAB_PILSNER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Zlaten Dab\",\r\n    \"producer\" : \"ACME company PP\",\r\n    \"category\" : \"PILSNER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/v1/api/beers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"v1",
+						"api",
+						"beers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create beer - SKOPSKO_IPA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Skopsko IPA\",\r\n    \"producer\" : \"ACME company SK\",\r\n    \"category\" : \"IPA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/v1/api/beers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"v1",
+						"api",
+						"beers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find beer by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/v1/api/beers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"v1",
+						"api",
+						"beers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find beer by Category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/v1/api/beers/categories/PILSNER",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"v1",
+						"api",
+						"beers",
+						"categories",
+						"PILSNER"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -23,9 +23,9 @@ public class MainVerticle extends AbstractVerticle {
   public void start(Promise<Void> startPromise) throws Exception {
     Router router = Router.router(vertx);
     router.route().handler(BodyHandler.create());
-    router.get("/api/v1/beers/:beerId").handler(vertxBeerController::findBeerById);
-    router.get("/api/v1/beers/categories/:category").handler(vertxBeerController::findBeersByCategory);
-    router.post("/api/v1/beers").handler(vertxBeerController::createBeer);
+    router.get("/v1/api/beers/:beerId").handler(vertxBeerController::findBeerById);
+    router.get("/v1/api/beers/categories/:category").handler(vertxBeerController::findBeersByCategory);
+    router.post("/v1/api/beers").handler(vertxBeerController::createBeer);
     vertx.createHttpServer().requestHandler(router).listen(8888, http -> {
       if (http.succeeded()) {
         startPromise.complete();
