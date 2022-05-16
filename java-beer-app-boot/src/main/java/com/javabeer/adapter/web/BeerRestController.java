@@ -1,7 +1,5 @@
-package com.javabeer.web;
+package com.javabeer.adapter.web;
 
-import com.javabeer.adapter.web.BeerController;
-import com.javabeer.adapter.web.BeerDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

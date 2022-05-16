@@ -1,13 +1,11 @@
 package com.javabeer.vertx;
 
 import com.javabeer.adapter.web.BeerController;
-import com.javabeer.vertx.web.VertxBeerController;
+import com.javabeer.vertx.adapter.web.VertxBeerController;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Launcher;
 import io.vertx.core.Promise;
-import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
-import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
 
 public class MainVerticle extends AbstractVerticle {

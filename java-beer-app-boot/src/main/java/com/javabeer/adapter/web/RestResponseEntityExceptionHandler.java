@@ -1,4 +1,4 @@
-package com.javabeer.web;
+package com.javabeer.adapter.web;
 
 import com.javabeer.usecase.exception.BeerNotFoundException;
 import com.javabeer.usecase.exception.BeerValidationException;

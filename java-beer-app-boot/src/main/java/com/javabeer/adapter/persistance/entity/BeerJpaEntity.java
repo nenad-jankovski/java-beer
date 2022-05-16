@@ -1,4 +1,4 @@
-package com.javabeer.persistance.entity;
+package com.javabeer.adapter.persistance.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

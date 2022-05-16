@@ -1,4 +1,4 @@
-package com.javabeer.vertx.web;
+package com.javabeer.vertx.adapter.web;
 
 import com.javabeer.adapter.web.BeerController;
 import com.javabeer.adapter.web.BeerDto;
@@ -24,8 +24,8 @@ public class VertxBeerController {
             sendErrorResponse(400, response);
         } else {
             var beerDto = body.toJsonObject().mapTo(BeerDto.class);
-            var user = beerController.createBeer(beerDto);
-            var result = JsonObject.mapFrom(user);
+            var createdBeerDto = beerController.createBeer(beerDto);
+            var result = JsonObject.mapFrom(createdBeerDto);
             sendOk(result, response);
         }
     }
