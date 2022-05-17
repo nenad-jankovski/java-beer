@@ -8,7 +8,6 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class Beer {
-
     private BeerId id;
     private String name;
     private String producer;
