@@ -1,4 +1,4 @@
-package com.javabeer.domain;
+package com.javabeer.domain.beer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

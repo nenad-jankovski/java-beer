@@ -1,7 +1,7 @@
 package com.javabeer.adapter.web;
 
-import com.javabeer.domain.BeerCategory;
-import com.javabeer.domain.BeerId;
+import com.javabeer.domain.beer.BeerCategory;
+import com.javabeer.domain.beer.BeerId;
 import com.javabeer.usecase.CreateBeer;
 import com.javabeer.usecase.FindBeerById;
 import com.javabeer.usecase.FindBeersByCategory;

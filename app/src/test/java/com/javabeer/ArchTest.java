@@ -21,7 +21,7 @@ public class ArchTest {
     @com.tngtech.archunit.junit.ArchTest
     final SliceRule noCyclicDependenciesAllowedInDomain = SlicesRuleDefinition
             .slices()
-            .matching("com.javabeer.domain.(*)..")
+            .matching("com.javabeer.domain.(*)")
             .should()
             .beFreeOfCycles();
 

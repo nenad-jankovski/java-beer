@@ -1,9 +1,9 @@
 package com.javabeer.adapter.persistance;
 
 import com.javabeer.adapter.persistance.entity.BeerJpaEntity;
-import com.javabeer.domain.Beer;
-import com.javabeer.domain.BeerCategory;
-import com.javabeer.domain.BeerId;
+import com.javabeer.domain.beer.Beer;
+import com.javabeer.domain.beer.BeerCategory;
+import com.javabeer.domain.beer.BeerId;
 
 public class BeerEntityMapper {
 
