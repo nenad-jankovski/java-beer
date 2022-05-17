@@ -6,5 +6,5 @@ import lombok.Value;
 @Value
 @RequiredArgsConstructor
 public class BeerId {
-    private final String id;
+    private final String value;
 }

@@ -29,7 +29,7 @@ public class BeerJpaRepositoryImpl implements BeerRepository {
     @Override
     public Optional<Beer> findBeerById(BeerId beerId) {
         return entityManager.createQuery("SELECT b from BeerJpaEntity b where b.id = :id", BeerJpaEntity.class)
-                .setParameter("id", beerId.getId())
+                .setParameter("id", beerId.getValue())
                 .setMaxResults(1)
                 .getResultStream()
                 .findFirst()

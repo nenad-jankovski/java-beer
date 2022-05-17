@@ -34,7 +34,7 @@ class BeerJpaRepositoryImplTest {
 
         Optional<Beer> beerById = beerRepository.findBeerById(new BeerId("1"));
         assertThat(beerById.isPresent()).isTrue();
-        assertThat(beerById.get().getId().getId()).isEqualTo("1");
+        assertThat(beerById.get().getId().getValue()).isEqualTo("1");
     }
 
 

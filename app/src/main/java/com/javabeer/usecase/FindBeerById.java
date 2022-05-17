@@ -14,12 +14,12 @@ public class FindBeerById {
     private final BeerRepository repository;
 
     public Beer findBeerById(BeerId beerId) {
-        if (beerId == null || StringUtils.isBlank(beerId.getId())) {
+        if (beerId == null || StringUtils.isBlank(beerId.getValue())) {
             // Validation logic can be placed in constructor
             throw new InvalidBeerIdException("BeerId should not be null or empty");
         }
         return repository.findBeerById(beerId)
                 .orElseThrow(() -> new BeerNotFoundException(
-                        "The beer with id: '%s' is not found".formatted(beerId.getId())));
+                        "The beer with id: '%s' is not found".formatted(beerId.getValue())));
     }
 }

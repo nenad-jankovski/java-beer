@@ -32,7 +32,7 @@ class CreateBeerTest {
                 .build();
         Beer createdBeer = createBeerUseCase.createBeer(beer);
         assertThat(createdBeer).isNotNull();
-        assertThat(createdBeer.getId().getId()).isNotNull();
+        assertThat(createdBeer.getId().getValue()).isNotNull();
     }
 
     @Test

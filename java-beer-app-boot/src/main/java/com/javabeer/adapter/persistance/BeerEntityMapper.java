@@ -13,7 +13,7 @@ public class BeerEntityMapper {
 
     public static BeerJpaEntity fromDomainModel(Beer beer) {
         var beerJpaEntity = new BeerJpaEntity();
-        beerJpaEntity.setId(beer.getId().getId());
+        beerJpaEntity.setId(beer.getId().getValue());
         beerJpaEntity.setCategory(beer.getCategory().name());
         beerJpaEntity.setProducer(beer.getProducer());
         beerJpaEntity.setName(beer.getName());

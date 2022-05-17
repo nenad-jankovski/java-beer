@@ -7,7 +7,7 @@ import com.javabeer.domain.BeerId;
 public record BeerDto(String id, String name, String producer, String category) {
 
     public BeerDto(Beer beer) {
-        this(beer.getId().getId(), beer.getName(), beer.getProducer(), beer.getCategory().name());
+        this(beer.getId().getValue(), beer.getName(), beer.getProducer(), beer.getCategory().name());
     }
     public Beer toBeer() {
         return Beer.builder()

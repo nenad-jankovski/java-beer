@@ -28,7 +28,7 @@ public class ManualConfig {
 
         @Override
         public Optional<Beer> findBeerById(BeerId beerId) {
-            return beers.stream().filter(beer -> beerId.getId().equals(beer.getId().getId())).findFirst();
+            return beers.stream().filter(beer -> beerId.getValue().equals(beer.getId().getValue())).findFirst();
         }
 
         @Override
