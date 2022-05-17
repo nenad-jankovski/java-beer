@@ -18,7 +18,7 @@ public class MainVerticle extends AbstractVerticle {
   private final VertxBeerController vertxBeerController = new VertxBeerController(beerController);
 
   @Override
-  public void start(Promise<Void> startPromise) throws Exception {
+  public void start(Promise<Void> startPromise) {
     Router router = Router.router(vertx);
     router.route().handler(BodyHandler.create());
     router.get("/v1/api/beers/:beerId").handler(vertxBeerController::findBeerById);
