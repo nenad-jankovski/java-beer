@@ -19,6 +19,13 @@ public class ArchTest {
             .resideInAnyPackage("..adapter..");
 
     @com.tngtech.archunit.junit.ArchTest
+    final SliceRule noCyclicDependenciesAllowedInDomain = SlicesRuleDefinition
+            .slices()
+            .matching("com.javabeer.domain.(*)..")
+            .should()
+            .beFreeOfCycles();
+
+    @com.tngtech.archunit.junit.ArchTest
     final SliceRule noCyclicDependenciesAllowedInUseCases = SlicesRuleDefinition
             .slices()
             .matching("com.javabeer.usecase.(*)..")
