@@ -16,7 +16,7 @@ public class FindBeerById {
     public Beer findBeerById(BeerId beerId) {
         if (beerId == null || StringUtils.isBlank(beerId.getId())) {
             // Validation logic can be placed in constructor
-            throw new InvalidBeerIdException("BeerId should not be null");
+            throw new InvalidBeerIdException("BeerId should not be null or empty");
         }
         return repository.findBeerById(beerId)
                 .orElseThrow(() -> new BeerNotFoundException(
