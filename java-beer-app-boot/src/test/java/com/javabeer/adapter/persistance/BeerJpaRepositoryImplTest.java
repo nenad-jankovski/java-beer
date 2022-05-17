@@ -6,14 +6,18 @@ import com.javabeer.domain.BeerId;
 import com.javabeer.usecase.port.persistance.BeerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-
-@SpringBootTest
+@DataJpaTest(includeFilters = @ComponentScan.Filter(
+        type = FilterType.ANNOTATION, classes = Repository.class
+))
 class BeerJpaRepositoryImplTest {
 
     @Autowired
