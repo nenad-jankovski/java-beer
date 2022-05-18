@@ -1,7 +1,7 @@
 package com.javabeer.usecase;
 
-import com.javabeer.domain.beer.Beer;
-import com.javabeer.domain.beer.BeerId;
+import com.javabeer.domain.Beer;
+import com.javabeer.domain.BeerId;
 import com.javabeer.usecase.port.IdGenerator;
 import com.javabeer.usecase.port.persistance.BeerRepository;
 import com.javabeer.usecase.validation.BeerValidator;

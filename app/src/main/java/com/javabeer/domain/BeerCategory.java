@@ -1,4 +1,4 @@
-package com.javabeer.domain.beer;
+package com.javabeer.domain;
 
 public enum BeerCategory {
     PILSNER,

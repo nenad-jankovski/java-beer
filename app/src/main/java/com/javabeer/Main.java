@@ -1,7 +1,7 @@
 package com.javabeer;
 
-import com.javabeer.domain.beer.Beer;
-import com.javabeer.domain.beer.BeerCategory;
+import com.javabeer.domain.Beer;
+import com.javabeer.domain.BeerCategory;
 
 import java.util.logging.Logger;
 

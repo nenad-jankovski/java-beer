@@ -1,7 +1,7 @@
 package com.javabeer.usecase;
 
-import com.javabeer.domain.beer.Beer;
-import com.javabeer.domain.beer.BeerCategory;
+import com.javabeer.domain.Beer;
+import com.javabeer.domain.BeerCategory;
 import com.javabeer.usecase.exception.InvalidBeerCategoryException;
 import com.javabeer.usecase.port.persistance.BeerRepository;
 import lombok.RequiredArgsConstructor;

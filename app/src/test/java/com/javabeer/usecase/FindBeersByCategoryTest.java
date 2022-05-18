@@ -1,9 +1,9 @@
 package com.javabeer.usecase;
 
 import com.javabeer.ManualConfig;
-import com.javabeer.domain.beer.Beer;
-import com.javabeer.domain.beer.BeerCategory;
-import com.javabeer.domain.beer.BeerId;
+import com.javabeer.domain.Beer;
+import com.javabeer.domain.BeerCategory;
+import com.javabeer.domain.BeerId;
 import com.javabeer.usecase.exception.InvalidBeerCategoryException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
 package com.javabeer.usecase.port.persistance;
 
-import com.javabeer.domain.beer.Beer;
-import com.javabeer.domain.beer.BeerCategory;
-import com.javabeer.domain.beer.BeerId;
+import com.javabeer.domain.Beer;
+import com.javabeer.domain.BeerCategory;
+import com.javabeer.domain.BeerId;
 
 import java.util.Collection;
 import java.util.Optional;

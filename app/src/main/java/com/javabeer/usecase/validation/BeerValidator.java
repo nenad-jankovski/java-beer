@@ -1,6 +1,6 @@
 package com.javabeer.usecase.validation;
 
-import com.javabeer.domain.beer.Beer;
+import com.javabeer.domain.Beer;
 import com.javabeer.usecase.exception.BeerValidationException;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;

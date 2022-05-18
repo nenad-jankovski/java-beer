@@ -1,8 +1,8 @@
 package com.javabeer.adapter.web;
 
-import com.javabeer.domain.beer.Beer;
-import com.javabeer.domain.beer.BeerCategory;
-import com.javabeer.domain.beer.BeerId;
+import com.javabeer.domain.Beer;
+import com.javabeer.domain.BeerCategory;
+import com.javabeer.domain.BeerId;
 
 public record BeerDto(String id, String name, String producer, String category) {
 
