@@ -72,7 +72,7 @@ class CreateBeerTest {
         BeerValidationException exception = assertThrows(
                 BeerValidationException.class,
                 () -> createBeerUseCase.createBeer(null),
-                "Expected createBeer(beer) to throw BeerValidationException on missing name"
+                "Expected createBeer(beer) to throw BeerValidationException when creating null beer"
         );
         assertThat(exception).isNotNull();
         assertThat(exception.getMessage()).isEqualTo("Beer should not be null");

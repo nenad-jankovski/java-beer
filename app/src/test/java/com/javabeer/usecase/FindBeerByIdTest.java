@@ -57,20 +57,20 @@ class FindBeerByIdTest {
         BeerNotFoundException exception = assertThrows(
                 BeerNotFoundException.class,
                 () -> findBeerByIdUseCase.findBeerById(new BeerId("2")),
-                "Expected createBeer(beer) to throw BeerValidationException on missing BeerCategory"
+                "Expected findBeerById(BeerId) to throw BeerNotFoundException on unexisting BeerId"
         );
         assertThat(exception).isNotNull();
         assertThat(exception.getMessage()).isEqualTo("The beer with id: '2' is not found");
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} => value=''{0}''")
     @NullSource
     @ValueSource(strings = {"", " "})
     void findBeerById_when_beerId_is_missing(String id) {
         InvalidBeerIdException exception = assertThrows(
                 InvalidBeerIdException.class,
                 () -> findBeerByIdUseCase.findBeerById(new BeerId(id)),
-                "Expected createBeer(beer) to throw BeerValidationException on missing BeerCategory"
+                "Expected findBeerById(BeerId) to throw InvalidBeerIdException on missing, or empty, BeerId"
         );
         assertThat(exception).isNotNull();
         assertThat(exception.getMessage()).isEqualTo("BeerId should not be null or empty");

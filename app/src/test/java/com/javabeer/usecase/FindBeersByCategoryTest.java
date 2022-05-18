@@ -59,7 +59,7 @@ class FindBeersByCategoryTest {
         InvalidBeerCategoryException exception = assertThrows(
                 InvalidBeerCategoryException.class,
                 () -> findBeersByCategoryUseCase.findBeersByCategory(null),
-                "Expected createBeer(beer) to throw BeerValidationException on missing BeerCategory"
+                "Expected findBeersByCategory(BeerCategory) to throw InvalidBeerCategoryException on missing BeerCategory"
         );
         assertThat(exception).isNotNull();
         assertThat(exception.getMessage()).isEqualTo("Beer category is mandatory");
