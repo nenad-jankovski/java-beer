@@ -31,14 +31,14 @@ public class Main {
                 .build();
 
         logger.info("\n---Creating beers---");
-        logger.info("Beers created: %s \n %s \n %s".formatted(createBeerUseCase.createBeer(skopsko),
-                createBeerUseCase.createBeer(skopskoIpa),
-                createBeerUseCase.createBeer(dab)));
+        logger.info("Beers created: %s \n %s \n %s".formatted(createBeerUseCase.apply(skopsko),
+                createBeerUseCase.apply(skopskoIpa),
+                createBeerUseCase.apply(dab)));
 
         logger.info("\n---Finding beers by id---");
-        logger.info("finding beer with id: %s \n -> %s ".formatted(skopsko.getId(), findBeerByIdUseCase.findBeerById(skopsko.getId())));
+        logger.info("finding beer with id: %s \n -> %s ".formatted(skopsko.getId(), findBeerByIdUseCase.apply(skopsko.getId())));
 
         logger.info("\n---Finding all beers in PILSNER category---");
-        logger.info("Beers in PILSNER category: %s ".formatted(beersByCategoryUseCase.findBeersByCategory(BeerCategory.PILSNER)));
+        logger.info("Beers in PILSNER category: %s ".formatted(beersByCategoryUseCase.apply(BeerCategory.PILSNER)));
     }
 }

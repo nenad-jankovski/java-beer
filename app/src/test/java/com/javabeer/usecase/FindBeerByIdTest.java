@@ -35,9 +35,9 @@ class FindBeerByIdTest {
                 .producer("Producer 1")
                 .category(BeerCategory.IPA)
                 .build();
-        createBeerUseCase.createBeer(beer);
+        createBeerUseCase.apply(beer);
 
-        var foundBeer = findBeerByIdUseCase.findBeerById(beerId);
+        var foundBeer = findBeerByIdUseCase.apply(beerId);
         assertThat(foundBeer).isNotNull();
         assertThat(foundBeer.getId()).isEqualTo(beerId);
     }
@@ -52,11 +52,11 @@ class FindBeerByIdTest {
                 .producer("Producer 1")
                 .category(BeerCategory.IPA)
                 .build();
-        createBeerUseCase.createBeer(beer);
+        createBeerUseCase.apply(beer);
 
         BeerNotFoundException exception = assertThrows(
                 BeerNotFoundException.class,
-                () -> findBeerByIdUseCase.findBeerById(new BeerId("2")),
+                () -> findBeerByIdUseCase.apply(new BeerId("2")),
                 "Expected findBeerById(BeerId) to throw BeerNotFoundException on unexisting BeerId"
         );
         assertThat(exception).isNotNull();
@@ -69,7 +69,7 @@ class FindBeerByIdTest {
     void findBeerById_when_beerId_is_missing(String id) {
         InvalidBeerIdException exception = assertThrows(
                 InvalidBeerIdException.class,
-                () -> findBeerByIdUseCase.findBeerById(new BeerId(id)),
+                () -> findBeerByIdUseCase.apply(new BeerId(id)),
                 "Expected findBeerById(BeerId) to throw InvalidBeerIdException on missing, or empty, BeerId"
         );
         assertThat(exception).isNotNull();

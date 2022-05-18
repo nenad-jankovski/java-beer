@@ -13,7 +13,7 @@ public class FindBeersByCategory {
 
     private final BeerRepository repository;
 
-    public Collection<Beer> findBeersByCategory(BeerCategory beerCategory) {
+    public Collection<Beer> apply(BeerCategory beerCategory) {
         if (beerCategory == null) {
             throw new InvalidBeerCategoryException("Beer category is mandatory");
         }

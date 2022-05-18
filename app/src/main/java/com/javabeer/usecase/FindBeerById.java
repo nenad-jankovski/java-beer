@@ -13,7 +13,7 @@ public class FindBeerById {
 
     private final BeerRepository repository;
 
-    public Beer findBeerById(BeerId beerId) {
+    public Beer apply(BeerId beerId) {
         if (beerId == null || StringUtils.isBlank(beerId.getValue())) {
             // Validation logic can be placed in constructor
             throw new InvalidBeerIdException("BeerId should not be null or empty");

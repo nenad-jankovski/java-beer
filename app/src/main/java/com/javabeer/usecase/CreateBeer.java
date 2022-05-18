@@ -13,7 +13,7 @@ public class CreateBeer {
     private final BeerRepository repository;
     private final IdGenerator generator;
 
-    public Beer createBeer(Beer beer) {
+    public Beer apply(Beer beer) {
         BeerValidator.validateCreateBeer(beer);
         beer.setId(new BeerId(generator.generate()));
         return repository.save(beer).orElse(null);

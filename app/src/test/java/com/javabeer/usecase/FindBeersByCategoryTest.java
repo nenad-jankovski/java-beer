@@ -32,7 +32,7 @@ class FindBeersByCategoryTest {
                 .producer("Producer 1")
                 .category(BeerCategory.IPA)
                 .build();
-        createBeerUseCase.createBeer(beer);
+        createBeerUseCase.apply(beer);
 
         //Second beer
         var beerId2 = new BeerId("2");
@@ -42,23 +42,23 @@ class FindBeersByCategoryTest {
                 .producer("Producer 2")
                 .category(BeerCategory.IPA)
                 .build();
-        createBeerUseCase.createBeer(beer2);
+        createBeerUseCase.apply(beer2);
 
-        var foundBeersByCategory = findBeersByCategoryUseCase.findBeersByCategory(BeerCategory.IPA);
+        var foundBeersByCategory = findBeersByCategoryUseCase.apply(BeerCategory.IPA);
         assertThat(foundBeersByCategory).isNotNull();
         assertThat(foundBeersByCategory.size()).isEqualTo(2);
     }
 
     @Test
     void findBeerByCategory_not_found() {
-        assertThat(findBeersByCategoryUseCase.findBeersByCategory(BeerCategory.PILSNER).size()).isEqualTo(0);
+        assertThat(findBeersByCategoryUseCase.apply(BeerCategory.PILSNER).size()).isEqualTo(0);
     }
 
     @Test
     void findBeerByCategory_fails_on_missing_category() {
         InvalidBeerCategoryException exception = assertThrows(
                 InvalidBeerCategoryException.class,
-                () -> findBeersByCategoryUseCase.findBeersByCategory(null),
+                () -> findBeersByCategoryUseCase.apply(null),
                 "Expected findBeersByCategory(BeerCategory) to throw InvalidBeerCategoryException on missing BeerCategory"
         );
         assertThat(exception).isNotNull();

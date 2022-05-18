@@ -19,17 +19,17 @@ public class BeerController {
 
     public BeerDto createBeer(final BeerDto beerDto) {
         var beer = beerDto.toBeer();
-        return new BeerDto(createBeer.createBeer(beer));
+        return new BeerDto(createBeer.apply(beer));
     }
 
     public BeerDto findBeerById(String id) {
         var beerId = new BeerId(id);
-        return new BeerDto(findBeerById.findBeerById(beerId));
+        return new BeerDto(findBeerById.apply(beerId));
     }
 
     public Collection<BeerDto> findBeersByCategory(String category) {
         var beerCategory = BeerCategory.valueOf(category);
-        return findBeersByCategory.findBeersByCategory(beerCategory)
+        return findBeersByCategory.apply(beerCategory)
                 .stream().map(BeerDto::new)
                 .toList();
     }

@@ -30,7 +30,7 @@ class CreateBeerTest {
                 .producer("Producer 1")
                 .category(BeerCategory.IPA)
                 .build();
-        Beer createdBeer = createBeerUseCase.createBeer(beer);
+        Beer createdBeer = createBeerUseCase.apply(beer);
         assertThat(createdBeer).isNotNull();
         assertThat(createdBeer.getId().getValue()).isNotNull();
     }
@@ -44,7 +44,7 @@ class CreateBeerTest {
                 .build();
         BeerValidationException exception = assertThrows(
                 BeerValidationException.class,
-                () -> createBeerUseCase.createBeer(beer),
+                () -> createBeerUseCase.apply(beer),
                 "Expected createBeer(beer) to throw BeerValidationException on missing BeerCategory"
         );
         assertThat(exception).isNotNull();
@@ -60,7 +60,7 @@ class CreateBeerTest {
                 .build();
         BeerValidationException exception = assertThrows(
                 BeerValidationException.class,
-                () -> createBeerUseCase.createBeer(beer),
+                () -> createBeerUseCase.apply(beer),
                 "Expected createBeer(beer) to throw BeerValidationException on missing name"
         );
         assertThat(exception).isNotNull();
@@ -71,7 +71,7 @@ class CreateBeerTest {
     void createBeer_fail_on_null() {
         BeerValidationException exception = assertThrows(
                 BeerValidationException.class,
-                () -> createBeerUseCase.createBeer(null),
+                () -> createBeerUseCase.apply(null),
                 "Expected createBeer(beer) to throw BeerValidationException when creating null beer"
         );
         assertThat(exception).isNotNull();
