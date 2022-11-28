@@ -1,5 +1,6 @@
 package com.javabeer.vertx;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javabeer.adapter.web.BeerController;
 import com.javabeer.vertx.adapter.web.VertxBeerController;
 import io.vertx.core.AbstractVerticle;
@@ -15,7 +16,7 @@ public class MainVerticle extends AbstractVerticle {
           vertxConfig.createBeerUseCase(),
           vertxConfig.findBeerByIdUseCase(),
           vertxConfig.findBeersByCategoryUseCase());
-  private final VertxBeerController vertxBeerController = new VertxBeerController(beerController);
+  private final VertxBeerController vertxBeerController = new VertxBeerController(beerController, new ObjectMapper());
 
   @Override
   public void start(Promise<Void> startPromise) {

@@ -1,5 +1,7 @@
 package com.javabeer.vertx.adapter.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javabeer.adapter.web.BeerController;
 import com.javabeer.adapter.web.BeerDto;
 import com.javabeer.usecase.exception.BeerNotFoundException;
@@ -12,9 +14,11 @@ import static java.util.Objects.isNull;
 public class VertxBeerController {
 
     private final BeerController beerController;
+    private final ObjectMapper mapper;
 
-    public VertxBeerController(BeerController controller) {
+    public VertxBeerController(BeerController controller, ObjectMapper mapper) {
         this.beerController = controller;
+        this.mapper = mapper;
     }
 
     public void createBeer(RoutingContext routingContext) {
@@ -54,17 +58,22 @@ public class VertxBeerController {
         } else {
             try {
                 var beers = beerController.findBeersByCategory(category);
-                var result = JsonObject.mapFrom(beers);
-                sendOk(result, response);
+                sendOk(mapper.writeValueAsString(beers), response);
             } catch (BeerNotFoundException e) {
                 sendErrorResponse(404, response);
+            } catch (JsonProcessingException e) {
+                sendErrorResponse(500, response);
             }
         }
     }
 
     private void sendOk(JsonObject result, HttpServerResponse response) {
+        this.sendOk(result.encodePrettily(), response);
+    }
+
+    private void sendOk(String result, HttpServerResponse response) {
         response.putHeader("content-type", "application/json")
-                .end(result.encodePrettily());
+                .end(result);
     }
 
     private void sendErrorResponse(int statusCode, HttpServerResponse response) {

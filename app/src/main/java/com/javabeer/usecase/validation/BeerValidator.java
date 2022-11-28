@@ -8,7 +8,6 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 public class BeerValidator {
 
     private BeerValidator() {
-
     }
 
     public static void validateCreateBeer(final Beer beer) {
