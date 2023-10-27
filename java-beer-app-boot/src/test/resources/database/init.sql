@@ -25,4 +25,4 @@ INTO
 beer
 (id, name, producer, category)
 VALUES
-('b6e227aa-38bd-473e-9b5a-064568c8964e', 'JUnit Beer 1', 'ACME Producer', 'PALE_ALE');
+('b6e227aa-38bd-473e-9b5a-064568c8964e', 'JUnit Beer 1', 'ACME Producer', 'IPA');

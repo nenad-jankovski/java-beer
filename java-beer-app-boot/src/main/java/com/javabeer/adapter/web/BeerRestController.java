@@ -10,7 +10,7 @@ import java.util.Collection;
 @RequestMapping("/v1/api/beers")
 public class BeerRestController {
 
-    private BeerController beerController;
+    private final BeerController beerController;
 
     public BeerRestController(BeerController beerController) {
         this.beerController = beerController;

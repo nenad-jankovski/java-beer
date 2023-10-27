@@ -1,5 +1,8 @@
 package com.javabeer.usecase;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import com.javabeer.ManualConfig;
 import com.javabeer.domain.Beer;
 import com.javabeer.domain.BeerCategory;
@@ -7,9 +10,6 @@ import com.javabeer.domain.BeerId;
 import com.javabeer.usecase.exception.InvalidBeerCategoryException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FindBeersByCategoryTest {
     private FindBeersByCategory findBeersByCategoryUseCase;
@@ -45,13 +45,12 @@ class FindBeersByCategoryTest {
         createBeerUseCase.apply(beer2);
 
         var foundBeersByCategory = findBeersByCategoryUseCase.apply(BeerCategory.IPA);
-        assertThat(foundBeersByCategory).isNotNull();
-        assertThat(foundBeersByCategory.size()).isEqualTo(2);
+        assertThat(foundBeersByCategory).isNotNull().hasSize(2);
     }
 
     @Test
     void findBeerByCategory_not_found() {
-        assertThat(findBeersByCategoryUseCase.apply(BeerCategory.PILSNER).size()).isEqualTo(0);
+        assertThat(findBeersByCategoryUseCase.apply(BeerCategory.PILSNER)).isEmpty();
     }
 
     @Test

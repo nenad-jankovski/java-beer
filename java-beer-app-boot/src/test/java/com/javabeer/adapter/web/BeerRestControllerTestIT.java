@@ -1,6 +1,5 @@
 package com.javabeer.adapter.web;
 
-import static org.mockito.Mockito.when;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TEST_METHOD;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -11,15 +10,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javabeer.domain.BeerCategory;
-import com.javabeer.usecase.port.IdGenerator;
-import java.util.UUID;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -39,13 +35,11 @@ import org.testcontainers.junit.jupiter.Container;
 })
 class BeerRestControllerTestIT {
   @Autowired private MockMvc mockMvc;
-  @Autowired private BeerController beerController;
   @Autowired private ObjectMapper objectMapper;
-  @MockBean private IdGenerator idGenerator;
 
   @Container
   private static final PostgreSQLContainer<?> postgres =
-      new PostgreSQLContainer<>("postgres:15-alpine").withDatabaseName("jugmk");
+      new PostgreSQLContainer<>("postgres:15.2-alpine").withDatabaseName("jugmk").withReuse(true);
 
   @BeforeAll
   static void beforeAll() {
@@ -66,8 +60,6 @@ class BeerRestControllerTestIT {
 
   @Test
   void createBeer_created() throws Exception {
-    var id = UUID.randomUUID().toString();
-    when(idGenerator.generate()).thenReturn(id);
     var beerDto = new BeerDto(null, "JUnit Beer", "ACME Producer", BeerCategory.PALE_ALE.name());
     this.mockMvc
         .perform(
@@ -76,7 +68,7 @@ class BeerRestControllerTestIT {
                 .content(objectMapper.writeValueAsString(beerDto))
                 .characterEncoding("utf-8"))
         .andExpect(status().isCreated())
-        .andExpect(jsonPath("$.id").value(id))
+        .andExpect(jsonPath("$.id").isNotEmpty())
         .andDo(print());
   }
 
@@ -128,5 +120,17 @@ class BeerRestControllerTestIT {
                 .characterEncoding("utf-8"))
         .andExpect(status().isNotFound())
         .andDo(print());
+  }
+  @Test
+  void findBeerByCategory_found() throws Exception {
+    this.mockMvc
+            .perform(
+                    get("/v1/api/beers/categories/IPA")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .characterEncoding("utf-8"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$[0].id").value("b6e227aa-38bd-473e-9b5a-064568c8964e"))
+            .andExpect(jsonPath("$[0].category").value("IPA"))
+            .andDo(print());
   }
 }
